@@ -1,0 +1,476 @@
+{
+  "version": 4,
+  "sprite": "https://www.mapbox.com/mapbox-gl-styles/sprites/bright",
+  "glyphs": "https://mapbox.s3.amazonaws.com/gl-glyphs-256/{fontstack}/{range}.pbf",
+  "constants": {
+	  "@0": "#00f",
+	  "@1": "#6bc9d7",
+	  "@2": "#6bd782",
+	  "@3": "#84e26b",
+	  "@4": "#b5e94b",
+	  "@5": "#dbeb34",
+	  "@6": "#ffc817",  
+	  "@7": "#ff8000",  
+	  "@8": "#ff2018",   
+	  "@land": "#000000",
+	  "@water": "#102134",
+	  "@wood": "#142211",
+	  "@park": "#142211",
+	  "@opacity": 1,
+	  "@small_streets_minzoom": 11,
+	  "@main_width": {"base": 5, "stops": [[9, 3], [13, 8], [17, 15]]},
+	  "@streets_width": {"base": 5, "stops": [[9, 1], [13, 5], [17, 10]]},
+	  "@small_width": {"base": 5, "stops": [[10, 0.7], [13, 3], [17, 7]]}
+  },
+  "sources": {
+    "moscow_hills": {
+      "type": "vector",
+      "url": "mapbox://minikarma.043a3c7a",
+      "maxZoom": 16
+    },
+    "mapbox": {
+      "type": "vector",
+      "url": "mapbox://mapbox.mapbox-streets-v6-dev",
+      "maxZoom": 16
+    }
+  },
+  "layers": [
+	  {
+	   "id": "background",
+	   "style": {
+	        "background-color": "@land"
+	      },
+	   "type": "background"
+   		},
+
+	    {
+	       "id": "landuse_park",
+	       "source": "mapbox",
+	       "source-layer": "landuse",
+	       "filter": { "class": "park" },
+	       "style": {
+	         "fill-color": "@park"
+	       },
+	       "type": "fill"
+	     },
+
+		 {
+		     "id": "water",
+		     "source": "mapbox",
+		     "source-layer": "water",
+		     "style": {
+		       "fill-color": "@water"
+		     },
+		     "type": "fill"
+		   },		 
+		 
+	    {
+	      "id": "small_streets_000",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "min-zoom": 10,
+		  "filter": {  
+			  "highway": ["tertiary","residential","unclassified"],
+			  "a_height": {
+			  	  "<": 120
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@1",
+			"line-width": "@small_width",
+			"line-opacity": 1
+	      }
+	    },
+
+	    {
+	      "id": "small_streets_120",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "min-zoom": 10,
+		  "filter": {  
+			  "highway": ["tertiary","residential","unclassified"],
+			  "a_height": {
+			  	  ">=": 120,
+				  "<": 140
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@2",
+			"line-width": "@small_width",
+			"line-opacity": 1
+	      }
+	    },
+
+	    {
+	      "id": "small_streets_140",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "min-zoom": 10,
+		  "filter": {  
+			  "highway": ["tertiary","residential","unclassified"],
+			  "a_height": {
+			  	  ">=": 140,
+				  "<": 160
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@3",
+			"line-width": "@small_width",
+			"line-opacity": 1
+	      }
+	    },
+	    {
+	      "id": "small_streets_160",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "min-zoom": 10,
+		  "filter": {  
+			  "highway": ["tertiary","residential","unclassified"],
+			  "a_height": {
+			  	  ">=": 160,
+				  "<": 180
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@6",
+			"line-width": "@small_width",
+			"line-opacity": 1
+	      }
+	    },		
+	    {
+	      "id": "small_streets_180",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "min-zoom": 10,
+		  "filter": {  
+			  "highway": ["tertiary","residential","unclassified"],
+			  "a_height": {
+			  	  ">=": 180,
+				  "<": 200
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@7",
+			"line-width": "@small_width",
+			"line-opacity": 1
+	      }
+	    },		
+	    {
+	      "id": "small_streets_200",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "min-zoom": 10,
+		  "filter": {  
+			  "highway": ["tertiary","residential","unclassified"],
+			  "a_height": {
+			  	  ">=": 200
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@8",
+			"line-width": "@small_width",
+			"line-opacity": 1
+	      }
+	    },		
+		
+		
+		
+		{
+	      "id": "streets_000",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "filter": {  
+			  "highway": ["secondary"],
+			  "a_height": {
+				  "<": 120
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@3",
+			"line-width": "@streets_width",
+			"line-opacity": "@opacity"
+	      }
+	    },	
+		{
+	      "id": "streets_120",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "filter": {  
+			  "highway": ["secondary"],
+			  "a_height": {
+			  	  ">=": 120,
+				  "<": 140
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@2",
+			"line-width": "@streets_width",
+			"line-opacity": "@opacity"
+	      }
+	    },	
+		{
+	      "id": "streets_140",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "filter": {  
+			  "highway": ["secondary"],
+			  "a_height": {
+			  	  ">=": 140,
+				  "<": 160
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@3",
+			"line-width": "@streets_width",
+			"line-opacity": "@opacity"
+	      }
+	    },	
+		{
+	      "id": "streets_160",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "filter": {  
+			  "highway": ["secondary"],
+			  "a_height": {
+			  	  ">=": 160,
+				  "<": 180
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@6",
+			"line-width": "@streets_width",
+			"line-opacity": "@opacity"
+	      }
+	    },	
+		{
+	      "id": "streets_180",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "filter": {  
+			  "highway": ["secondary"],
+			  "a_height": {
+			  	  ">=": 180,
+				  "<": 200
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@7",
+			"line-width": "@streets_width",
+			"line-opacity": "@opacity"
+	      }
+	    },	
+		{
+	      "id": "streets_200",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "filter": {  
+			  "highway": ["secondary"],
+			  "a_height": {
+			  	  ">=": 200
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@8",
+			"line-width": "@streets_width",
+			"line-opacity": "@opacity"
+	      }
+	    },
+	
+	
+	    {
+	      "id": "main_streets_000",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "filter": {  
+			  "highway": ["motorway", "motorroad", "trunk", "primary"],
+			  "a_height": {
+				  "<": 120
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@1",
+	  		"line-width": "@main_width",
+	  		"line-opacity": "@opacity"
+	    	}
+	    },
+	    {
+	      "id": "main_streets_120",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "filter": {  
+			  "highway": ["motorway", "motorroad", "trunk", "primary"],
+			  "a_height": {
+			  	  ">=": 120,
+				  "<": 140
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@2",
+	  		"line-width": "@main_width",
+	  		"line-opacity": "@opacity"
+	    	}
+	    },
+	    {
+	      "id": "main_streets_140",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "filter": {  
+			  "highway": ["motorway", "motorroad", "trunk", "primary"],
+			  "a_height": {
+			  	  ">=": 140,
+				  "<": 160
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@3",
+	  		"line-width": "@main_width",
+	  		"line-opacity": "@opacity"
+	    	}
+	    },
+	    {
+	      "id": "main_streets_160",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "filter": {  
+			  "highway": ["motorway", "motorroad", "trunk", "primary"],
+			  "a_height": {
+			  	  ">=": 160,
+				  "<": 180
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@6",
+	  		"line-width": "@main_width",
+	  		"line-opacity": "@opacity"
+	    	}
+	    }, 
+	    {
+	      "id": "main_streets_180",
+	      "source": "moscow_hills",
+	      "source-layer": "Hills",
+	      "type": "line",
+		  "filter": {  
+			  "highway": ["motorway", "motorroad", "trunk", "primary"],
+			  "a_height": {
+			  	  ">=": 180,
+				  "<": 200
+			 	}
+		  },
+	      "render": {
+	        "line-cap": "round",
+	        "line-join": "round"
+	      },
+	      "style": {
+	        "line-color": "@7",
+	  		"line-width": "@main_width",
+	  		"line-opacity": "@opacity"
+	    	}
+	    }, 
+    	{
+ 		"id": "main_streets_200",
+     	"source": "moscow_hills",
+      	"source-layer": "Hills",
+      	"type": "line",
+	 	"filter": {  
+		  "highway": ["motorway", "motorroad", "trunk", "primary"],
+		  "a_height": {
+		  	  ">=": 200
+		 	}
+	  },
+      "render": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "style": {
+        "line-color": "@8",
+  		"line-width": "@main_width",
+  		"line-opacity": "@opacity"
+    	}
+    }
+	
+	
+	
+	
+  ]
+}
+  
