@@ -1,0 +1,183 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset='UTF-8'/>
+  <title>Moscow Hills</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.2.1/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.2.1/mapbox-gl.js'></script>
+  
+  
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+  <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+    #legend { 
+  	  display: block;
+  	  position: absolute;
+  	  bottom: 30px; right: 10px; 
+  	  font-family: Helvetica, Lucida, Arial, Sans-Serif;
+  	  text-align: center;
+  	  font-size: 12px;
+  	  color: white;
+    }
+    #header { 
+  	  display: block;
+  	  position: absolute;
+  	  left: 20px; top: 20px; 
+  	  font-family: Helvetica, Lucida, Arial, Sans-Serif;
+  	  font-size: 30px;
+  	  color: white;
+	  z-index: 100500;
+    }
+
+    #about-link { 
+  	  display: block;
+  	  position: absolute;
+  	  left: 10px; bottom: 10px; 
+  	  font-family: Helvetica, Lucida, Arial, Sans-Serif;
+  	  font-size: 13px;
+  	  color: white;
+	  z-index: 100500;
+	  cursor: pointer;
+    }
+	#about-link:hover { color: red; }
+	
+	#about-container {
+		display: none;
+		position: absolute;
+		z-index: 100600;
+		left: 0px; top: 0px;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,.6);
+		color: #dedede;
+		
+		text-align: center;
+	}
+	
+	#about {
+		text-align: left;
+		font-family: Helvetica, Lucida, Arial, Sans-Serif;
+		font-size: 20px;
+		line-height: 35px;
+		margin: 200px;
+		
+	}
+	
+	#ok-btn {
+		margin-top: 40px;
+		display: inline-block;
+		background: #19AAC7;
+		padding: 10px 20px;
+		line-height: 30px;
+		border-radius: 3px;
+		cursor: pointer;
+		
+	}
+	
+	#ok-btn:hover { cursor: pointer; background: #18C0E2; }
+
+	a,a:visited { color: #dedede; text-decoration: none; }
+	a:hover { color: white; }
+    .row {
+  	  opacity: 0.9;
+  	  display: block; width: 60; padding: 5px;
+  	  font-weight: normal;
+  	  font-family: Helvetica, Lucida, Arial, Sans-Serif;
+  	  text-align: center;
+  	  font-size: 0.9em;
+  	  color: #333;
+    }
+  </style>
+</head>
+<body>
+<div id="about-container">
+	<div id="close-btn"></div>
+	<div id="about">
+		Moscow streets elevation<br/>
+		Data: <a href="http://dds.cr.usgs.gov/srtm/version2_1/">SRTM 3</a> + <a href="http://openstreetmap.org">OpenStreetMap</a><br/>
+		Visualization: <a href="http://mapbox.com">Mapbox Studio</a> + <a href="https://www.mapbox.com/mapbox-gl-js/api/">Mapbox GL JS</a><br/>
+		<a href="http://twitter.com/karmatsky">© Andrey Karmatsky</a><br/>
+	<div id="ok-btn">Close</div>	
+	</div>
+
+</div>
+
+<div id="map">
+</div>
+<div id="header">Moscow Hills</div>
+<div id="about-link">About this map</div>
+<div id="legend">
+	Height, meters
+	<div class="row" style="background: #ff2018">> 200</div>
+	<div class="row" style="background: #ff8000">181–200</div>
+	<div class="row" style="background: #ffc817">161–180</div>
+	<div class="row" style="background: #84e26b">141–160</div>
+	<div class="row" style="background: #6bd782">121–140</div>
+	<div class="row" style="background: #6bc9d7">< 120</div>
+<div>
+
+
+
+
+<script>
+
+
+   	
+   	mapboxgl.accessToken = 'pk.eyJ1IjoibWluaWthcm1hIiwiYSI6IlFkcHVEaUkifQ.5jfO34VDrz0pMRSe1sojvA';
+   	var map = new mapboxgl.Map({
+   	  container: 'map', // container id
+   	  style: 'style/hills-style-v1.json',
+   	  center: [55.752973, 37.625224],
+   	  zoom: 10.5,
+   	  minZoom: 10,
+   	  maxZoom: 18
+   	});
+
+
+
+
+$(function() {
+	$("#about-link").click(function() {
+	    $( "#about-container").show(100);
+	});
+	$("#ok-btn").click(function() {
+	    $( "#about-container").hide(100);
+	});
+});
+
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter26158509 = new Ya.Metrika({id:26158509,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/26158509" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+</body>
+
+</html>
